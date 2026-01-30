@@ -1,0 +1,955 @@
+﻿<!DOCTYPE html> 
+
+<html lang=”vi”> 
+
+<head> 
+
+    <meta charset=”UTF-8”> 
+
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0”> 
+
+    <title>Giới thiệu sách: Sau khi ta lớn những nỗi đau có bé lại không?</title> 
+
+    <link rel=”stylesheet” href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css> 
+
+    <style> 
+
+{ 
+
+Margin: 0; 
+
+            Padding: 0; 
+
+            Box-sizing: border-box; 
+
+        } 
+
+         
+
+        Body { 
+
+            Font-family: “Times New Roman”, Times, serif; 
+
+            Line-height: 1.6; 
+
+            Color: #f0f8ff; 
+
+            Overflow-x: hidden; 
+
+            Background-color: #000814; 
+
+        } 
+
+         
+
+        /* Nền động với bướm và darkblue */ 
+
+        #background-container { 
+
+            Position: fixed; 
+
+            Top: 0; 
+
+            Left: 0; 
+
+            Width: 100%; 
+
+            Height: 100%; 
+
+            z-index: -1; 
+
+            background: linear-gradient(to bottom, #000814 0%, #001d3d 50%, #000814 100%); 
+
+            overflow: hidden; 
+
+        } 
+
+         
+
+        .butterfly { 
+
+            Position: absolute; 
+
+            Width: 10px; 
+
+            Height: 15px; 
+
+            Background-image: url(‘data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg viewBox=”0 0 100 100”><path d=”M50,10 C70,10 85,30 85,50 C85,70 70,90 50,90 C30,90 15,70 15,50 C15,30 30,10 50,10 Z” fill=”%2342a5f5”/><path d=”M45,15 C40,25 35,40 40,55 C45,70 55,70 60,55 C65,40 60,25 55,15 C52.5,10 47.5,10 45,15 Z” fill=”%2390caf9”/><path d=”M50,25 C55,25 60,30 60,35 C60,40 55,45 50,45 C45,45 40,40 40,35 C40,30 45,25 50,25 Z” fill=”%230d47a1”/></svg>’); 
+
+            Background-size: contain; 
+
+            Background-repeat: no-repeat; 
+
+            Opacity: 0.7; 
+
+            Filter: drop-shadow(0 0 5px rgba(66, 165, 245, 0.7)); 
+
+        } 
+
+         
+
+        /* Container chính */ 
+
+        .container { 
+
+            Max-width: 1200px; 
+
+            Margin: 0 auto; 
+
+            Padding: 20px; 
+
+        } 
+
+         
+
+        /* Header */ 
+
+        Header { 
+
+            Text-align: center; 
+
+            Padding: 30px 0; 
+
+            Margin-bottom: 40px; 
+
+            Position: relative; 
+
+        } 
+
+         
+
+        Header::after { 
+
+            Content: ‘’; 
+
+            Position: absolute; 
+
+            Bottom: 0; 
+
+            Left: 50%; 
+
+            Transform: translateX(-50%); 
+
+            Width: 200px; 
+
+            Height: 3px; 
+
+            Background: linear-gradient(to right, transparent, #42a5f5, transparent); 
+
+        } 
+
+         
+
+        H1 { 
+
+            Font-size: 2.8rem; 
+
+            Margin-bottom: 15px; 
+
+            Color: #bbdefb; 
+
+            Text-shadow: 0 0 10px rgba(66, 165, 245, 0.5); 
+
+            Line-height: 1.3; 
+
+        } 
+
+         
+
+        .author { 
+
+            Font-size: 1.5rem; 
+
+            Color: #90caf9; 
+
+            Font-style: italic; 
+
+            Margin-bottom: 10px; 
+
+        } 
+
+         
+
+        .tagline { 
+
+            Font-size: 1.2rem; 
+
+            Color: #64b5f6; 
+
+            Max-width: 800px; 
+
+            Margin: 0 auto; 
+
+        } 
+
+         
+
+        /* Các phần nội dung */ 
+
+        .section { 
+
+            Background-color: rgba(13, 71, 161, 0.2); 
+
+            Border-radius: 15px; 
+
+            Padding: 30px; 
+
+            Margin-bottom: 40px; 
+
+            Box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+
+            Border-left: 5px solid #42a5f5; 
+
+            Transition: transform 0.3s, box-shadow 0.3s; 
+
+            Backdrop-filter: blur(5px); 
+
+        } 
+
+         
+
+        .section:hover { 
+
+            Transform: translateY(-5px); 
+
+            Box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
+
+        } 
+
+         
+
+        H2 { 
+
+            Font-size: 2.2rem; 
+
+            Color: #bbdefb; 
+
+            Margin-bottom: 25px; 
+
+            Padding-bottom: 10px; 
+
+            Border-bottom: 2px solid rgba(66, 165, 245, 0.5); 
+
+            Display: flex; 
+
+            Align-items: center; 
+
+        } 
+
+         
+
+        H2 i { 
+
+            Margin-right: 15px; 
+
+            Color: #42a5f5; 
+
+        } 
+
+         
+
+        .sub-section { 
+
+            Margin-bottom: 25px; 
+
+        } 
+
+         
+
+        H3 { 
+
+            Font-size: 1.6rem; 
+
+            Color: #90caf9; 
+
+            Margin-bottom: 15px; 
+
+            Display: flex; 
+
+            Align-items: center; 
+
+        } 
+
+         
+
+        H3 i { 
+
+            Margin-right: 10px; 
+
+            Color: #64b5f6; 
+
+        } 
+
+         
+
+        P { 
+
+            Font-size: 1.3rem; 
+
+            Margin-bottom: 15px; 
+
+            Text-align: justify; 
+
+        } 
+
+         
+
+        Ul { 
+
+            Margin-left: 25px; 
+
+            Margin-bottom: 20px; 
+
+        } 
+
+         
+
+        Li { 
+
+            Font-size: 1.3rem; 
+
+            Margin-bottom: 10px; 
+
+            Padding-left: 10px; 
+
+        } 
+
+         
+
+        /* Phần thông điệp */ 
+
+        .message { 
+
+            Text-align: center; 
+
+            Padding: 40px; 
+
+            Background: linear-gradient(to right, rgba(13, 71, 161, 0.3), rgba(25, 118, 210, 0.3)); 
+
+            Border-radius: 15px; 
+
+            Margin-top: 30px; 
+
+            Border: 1px solid rgba(66, 165, 245, 0.3); 
+
+        } 
+
+         
+
+        .message h2 { 
+
+            Border: none; 
+
+            Justify-content: center; 
+
+        } 
+
+         
+
+        .quote { 
+
+            Font-size: 1.8rem; 
+
+            Font-style: italic; 
+
+            Color: #e3f2fd; 
+
+            Max-width: 900px; 
+
+            Margin: 0 auto; 
+
+            Line-height: 1.5; 
+
+            Padding: 20px; 
+
+            Position: relative; 
+
+        } 
+
+         
+
+        .quote::before, .quote::after { 
+
+            Content: ‘”’; 
+
+            Font-size: 3rem; 
+
+            Color: #42a5f5; 
+
+            Position: absolute; 
+
+            Opacity: 0.7; 
+
+        } 
+
+         
+
+        .quote::before { 
+
+            Top: 0; 
+
+            Left: -20px; 
+
+        } 
+
+         
+
+        .quote::after { 
+
+            Bottom: -30px; 
+
+            Right: -20px; 
+
+        } 
+
+         
+
+        /* Footer */ 
+
+        Footer { 
+
+            Text-align: center; 
+
+            Padding: 30px 0; 
+
+            Margin-top: 50px; 
+
+            Border-top: 1px solid rgba(66, 165, 245, 0.3); 
+
+            Color: #90caf9; 
+
+            Font-size: 1.1rem; 
+
+        } 
+
+         
+
+        /* Responsive */ 
+
+        @media (max-width: 768px) { 
+
+            .container { 
+
+                Padding: 15px; 
+
+            } 
+
+             
+
+            H1 { 
+
+                Font-size: 2.2rem; 
+
+            } 
+
+             
+
+            .section { 
+
+                Padding: 20px; 
+
+            } 
+
+             
+
+            H2 { 
+
+                Font-size: 1.8rem; 
+
+            } 
+
+             
+
+            P, li { 
+
+                Font-size: 1.1rem; 
+
+            } 
+
+             
+
+            .quote { 
+
+                Font-size: 1.4rem; 
+
+            } 
+
+        } 
+
+         
+
+        /* Hiệu ứng xuất hiện */ 
+
+        .hidden { 
+
+            Opacity: 0; 
+
+            Transform: translateY(30px); 
+
+            Transition: all 0.8s; 
+
+        } 
+
+         
+
+        .visible { 
+
+            Opacity: 1; 
+
+            Transform: translateY(0); 
+
+        } 
+
+    </style> 
+
+</head> 
+
+<body> 
+
+    <!—Nền động với bướm à 
+
+    <div id=”background-container”></div> 
+
+     
+
+    <div class=”container”> 
+
+        <header> 
+
+            <h1>Sau Khi Ta Lớn<br>Những Nỗi Đau Có Bé Lại Không?</h1> 
+
+            <p class=”author”>Tác giả: Trần Việt Anh</p> 
+
+            <p class=”tagline”>Một hành trình khám phá những mảng màu của sự trưởng thành và nghệ thuật hòa giải với bản thân</p> 
+
+        </header> 
+
+         
+
+        <main> 
+
+          <section class=”book-cover-section hidden”> 
+
+    <div class="center-block" class=”cover-wrapper”> 
+
+        <img src=”https://cdn1.fahasa.com/media/catalog/product/b/i/bia-1_1_24.jpg” alt=”Bìa sách Sau khi ta lớn những nỗi đau có bé lại không?” class=”book-cover-img”> 
+	<audio src="sau_khi_ta_lon_nhung_noi_dau_co_be_lai_khong_e2090898-d97d-44b3-ab09-56c35de49a61" controls>
+</audio>
+
+        <p class=”image-caption”>Sau khi ta lớn <br> những nỗi đau có bé lại không?</p>
+	<video controls style = "align:center"><source src="7484681111166" type="video/mp4"></video> 
+
+    </div> 
+
+</section> 
+
+ 
+
+<style> 
+
+    .book-cover-section { 
+
+        Display: flex; 
+
+        Justify-content: center; 
+
+        Align-items: center; 
+
+        Margin-bottom: 50px; 
+
+        Perspective: 1000px; 
+
+    } 
+
+ 
+
+    .cover-wrapper { 
+
+        Text-align: center; 
+
+        Max-width: 350px; 
+
+        Transition: transform 0.5s; 
+
+    } 
+
+ 
+
+    .cover-wrapper:hover { 
+
+        Transform: rotateY(-5deg) rotateX(5deg); 
+
+    } 
+
+ 
+
+    .book-cover-img { 
+
+        Width: 100%; 
+
+        Height: auto; 
+
+        Border-radius: 8px; 
+
+        Box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(66, 165, 245, 0.2); 
+
+        Border: 1px solid rgba(255, 255, 255, 0.1); 
+
+    } 
+
+ 
+
+    .image-caption { 
+
+        Margin-top: 15px; 
+
+        Font-style: italic; 
+
+        Color: #90caf9; 
+
+        Font-size: 1.1rem; 
+
+        Letter-spacing: 1px; 
+
+        Text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
+
+    } 
+
+ 
+
+    @media (max-width: 768px) { 
+
+        .cover-wrapper { 
+
+            Max-width: 250px; 
+
+        } 
+
+    } 
+
+</style> 
+
+            <section class=”section hidden” id=”content”> 
+
+                <h2><i class=”fas fa-palette”></i> Nội Dung Chính: Những Mảng Màu Của Sự Trưởng Thành</h2> 
+
+                <p>Tác phẩm là tập hợp những dòng tản văn ngắn, xoay quanh ba trục cảm xúc chính:</p> 
+
+                 
+
+                <div class=”sub-section”> 
+
+                    <h3><i class=”fas fa-shattered-glass”></i> Sự Vỡ Mộng</h3> 
+
+                    <p>Những ảo tưởng màu hồng về thế giới người lớn dần sụp đổ, thay vào đó là gánh nặng cơm áo, trách nhiệm và những mối quan hệ tan vỡ. Tác giả dẫn dắt người đọc qua những khoảnh khắc nhận ra rằng cuộc sống không phải lúc nào cũng như những gì ta từng mơ ước.</p> 
+
+                </div> 
+
+                 
+
+                <div class=”sub-section”> 
+
+                    <h3><i class=”fas fa-user-friends”></i> Nỗi Cô Đơn Tự Nguyện</h3> 
+
+                    <p>Khi trưởng thành, ta không còn khao khát đám đông mà dần thu mình lại, chọn lọc những kết nối thực sự giá trị. Đây không phải là sự cô lập tiêu cực, mà là một sự lựa chọn có ý thức để bảo vệ năng lượng tinh thần và tìm thấy sự bình yên trong không gian riêng.</p> 
+
+                </div> 
+
+                 
+
+                <div class=”sub-section”> 
+
+                    <h3><i class=”fas fa-heart”></i> Sự Hòa Giải Với Bản Thân</h3> 
+
+                    <p>Chấp nhận những khiếm khuyết, những thất bại và cả những phần “đứa trẻ” vẫn còn đang tổn thương bên trong mình. Quá trình này không dễ dàng nhưng cần thiết để chúng ta có thể tiến về phía trước với sự tự tin và lòng trắc ẩn dành cho chính mình.</p> 
+
+                </div> 
+
+            </section> 
+
+             
+
+            <section class=”section hidden” id=”style”> 
+
+                <h2><i class=”fas fa-feather-alt”></i> Đặc Điểm Nổi Bật Trong Văn Phong</h2> 
+
+                 
+
+                <div class=”sub-section”> 
+
+                    <h3><i class=”fas fa-bolt”></i> Trực Diện Và Gai Góc</h3> 
+
+                    <p>Khác với sự dịu dàng của Lam, văn của Trần Việt Anh có phần thực tế hơn. Tác giả không ngần ngại chỉ ra những sự thật phũ phàng của cuộc sống, những góc khuất trong tâm hồn mà nhiều người thường tránh né. Cách tiếp cận thẳng thắn này tạo nên sự chân thực và sức nặng cho tác phẩm.</p> 
+
+                </div> 
+
+                 
+
+                <div class=”sub-section”> 
+
+                    <h3><i class=”fas fa-hands-helping”></i> Sự Đồng Cảm Sâu Sắc</h3> 
+
+                    <p>Sách chạm đến những ngóc ngách thầm kín nhất của tâm hồn – nơi chứa đựng những nỗi đau không tên mà đôi khi ta chẳng biết kể cùng ai. Bằng sự tinh tế trong quan sát và diễn đạt, tác giả tạo ra một không gian an toàn để độc giả nhìn nhận và chữa lành những tổn thương của chính mình.</p> 
+
+                </div> 
+
+            </section> 
+
+             
+
+            <section class=”section hidden” id=”why-read”> 
+
+                <h2><i class=”fas fa-book-reader”></i> Tại Sao Bạn Nên Đọc Cuốn Sách Này?</h2> 
+
+                <p>Cuốn sách không cung cấp một “liều thuốc tiên” để xóa sạch nỗi đau, nhưng nó giúp bạn:</p> 
+
+                 
+
+                <div class=”sub-section”> 
+
+                    <h3><i class=”fas fa-users”></i> Thấy Mình Không Đơn Độc</h3> 
+
+                    <p>Nhận ra rằng bất cứ ai ngoài kia cũng đang mang trong mình những vết xước tương tự. Đôi khi, chỉ cần biết rằng mình không phải người duy nhất trải qua những khó khăn cũng đã là một sự an ủi lớn lao.</p> 
+
+                </div> 
+
+                 
+
+                <div class=”sub-section”> 
+
+                    <h3><i class=”fas fa-hands”></i> Học Cách Bao Dung</h3> 
+
+                    <p>Bớt khắt khe với chính mình khi không đạt được những kỳ vọng mà xã hội đặt ra. Cuốn sách khuyến khích độc giả chấp nhận bản thân với tất cả những điểm không hoàn hảo, và hiểu rằng giá trị của một người không được đo bằng thành tựu hay sự công nhận từ bên ngoài.</p> 
+
+                </div> 
+
+                 
+
+                <div class=”sub-section”> 
+
+                    <h3><i class=”fas fa-fist-raised”></i> Tìm Thấy Sức Mạnh</h3> 
+
+                    <p>Hiểu rằng trưởng thành là một hành trình bền bỉ, nơi nỗi đau là một phần tất yếu để tạo nên một bản thể vững vàng hơn. Thông qua những câu chuyện và chiêm nghiệm, độc giả sẽ khám phá ra nguồn sức mạnh nội tâm mà họ không biết mình đang có.</p> 
+
+                </div> 
+
+            </section> 
+
+             
+
+            <div class=”message hidden”> 
+
+                <h2><i class=”fas fa-quote-left”></i> Thông Điệp</h2> 
+
+                <p class=”quote”>Nỗi đau không hề nhỏ đi, chỉ là đôi vai bạn đã rộng hơn, trái tim bạn đã kiên cường hơn để gánh vác chúng mà thôi.</p> 
+
+            </div> 
+
+        </main> 
+
+         
+
+        <footer> 
+
+            <p>Trang giới thiệu sách “Sau Khi Ta Lớn Những Nỗi Đau Có Bé Lại Không?” – Một tác phẩm đáng đọc về hành trình trưởng thành</p> 
+<a rel=”stylesheet” href=https://shopee.vn/S%C3%A1ch-Sau-Khi-Ta-L%E1%BB%9Bn-Nh%E1%BB%AFng-N%E1%BB%97i-%C4%90au-C%C3%B3-B%C3%A9-L%E1%BA%A1i-Kh%C3%B4ng--i.45194730.40015511412>Link mua sách</a> 
+
+            <p>© 2026 – Hnhu</p> 
+
+        </footer> 
+
+    </div> 
+
+ 
+
+    <script> 
+
+        // Tạo hiệu ứng bướm bay 
+
+        Function createButterflies() { 
+
+            Const container = document.getElementById(‘background-container’); 
+
+            Const butterflyCount = 15; 
+
+             
+
+            For (let i = 0; i < butterflyCount; i++) { 
+
+                Const butterfly = document.createElement(‘div’); 
+
+                Butterfly.className = ‘butterfly’; 
+
+                 
+
+                // Kích thước ngẫu nhiên 
+
+                Const size = Math.random() * 30 + 20; 
+
+                Butterfly.style.width = `${size}px`; 
+
+                Butterfly.style.height = `${size}px`; 
+
+                 
+
+                // Vị trí bắt đầu ngẫu nhiên 
+
+                Const startX = Math.random() * 100; 
+
+                Const startY = Math.random() * 100; 
+
+                Butterfly.style.left = `${startX}%`; 
+
+                Butterfly.style.top = `${startY}%`; 
+
+                 
+
+                // Hiệu ứng bay 
+
+                Const duration = Math.random() * 20 + 20; 
+
+                Const delay = Math.random() * 5; 
+
+                 
+
+                Butterfly.style.animation = `fly ${duration}s linear ${delay}s infinite`; 
+
+                 
+
+                // Tạo keyframes động cho mỗi con bướm 
+
+                Const keyframes = ` 
+
+                @keyframes fly-${i} { 
+
+                    0% { 
+
+                        Transform: translate(0, 0) rotate(0deg); 
+
+                        Opacity: 0.7; 
+
+                    } 
+
+                    25% { 
+
+                        Transform: translate(${Math.random() * 100 – 50}px, ${Math.random() * 100 – 50}px) rotate(90deg); 
+
+                    } 
+
+                    50% { 
+
+                        Transform: translate(${Math.random() * 100 – 50}px, ${Math.random() * 100 – 50}px) rotate(180deg); 
+
+                        Opacity: 0.9; 
+
+                    } 
+
+                    75% { 
+
+                        Transform: translate(${Math.random() * 100 – 50}px, ${Math.random() * 100 – 50}px) rotate(270deg); 
+
+                    } 
+
+                    100% { 
+
+                        Transform: translate(0, 0) rotate(360deg); 
+
+                        Opacity: 0.7; 
+
+                    } 
+
+                }`; 
+
+                 
+
+                Const style = document.createElement(‘style’); 
+
+                Style.textContent = keyframes; 
+
+                Document.head.appendChild(style); 
+
+                 
+
+                Butterfly.style.animation = `fly-${i} ${duration}s ease-in-out ${delay}s infinite`; 
+
+                 
+
+                Container.appendChild(butterfly); 
+
+            } 
+
+        } 
+
+         
+
+        // Hiệu ứng scroll xuất hiện 
+
+        Function checkVisibility() { 
+
+            Const sections = document.querySelectorAll(‘.hidden’); 
+
+             
+
+            Sections.forEach(section => { 
+
+                Const sectionTop = section.getBoundingClientRect().top; 
+
+                Const windowHeight = window.innerHeight; 
+
+                 
+
+                If (sectionTop < windowHeight * 0.85) { 
+
+                    Section.classList.add(‘visible’); 
+
+                } 
+
+            }); 
+
+        } 
+
+         
+
+        // Khởi tạo 
+
+        Document.addEventListener(‘DOMContentLoaded’, function() { 
+
+            createButterflies(); 
+
+            checkVisibility(); 
+
+             
+
+            // Kiểm tra khi scroll 
+
+            Window.addEventListener(‘scroll’, checkVisibility); 
+
+             
+
+            // Thêm hiệu ứng cho các phần khi click 
+
+            Document.querySelectorAll(‘h2, h3’).forEach(heading => { 
+
+                Heading.addEventListener(‘click’, function() { 
+
+                    This.style.color = ‘#42a5f5’; 
+
+                    setTimeout(() => { 
+
+                        this.style.color = ‘’; 
+
+                    }, 500); 
+
+                }); 
+
+            }); 
+
+        }); 
+
+    </script> 
+
+</body> 
+
+</html> 
+
+ 
